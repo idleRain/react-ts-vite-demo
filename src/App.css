@@ -1,0 +1,102 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #f2f2f2;
+    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px #d9d9d9;
+}
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+label {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    text-shadow: 2px 2px 4px #d9d9d9;
+}
+input[type="text"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 5px 5px 15px #d9d9d9, -5px -5px 15px #ffffff;
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+input {
+    user-select: none;
+}
+button[type="submit"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 5px 5px 15px #d9d9d9, -5px -5px 15px #ffffff;
+    font-size: 1.5rem;
+    background: #f2f2f2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button[type="submit"]:hover {
+    background: #d9d9d9;
+    box-shadow: none;
+    transform: translateY(-5px);
+}
+ul {
+    width: 500px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px #d9d9d9, -5px -5px 15px #ffffff;
+    background: #f2f2f2;
+    width: 100%;
+    user-select: none;
+}
+li .todo-name {
+    transition: all .3s ease-in-out;
+}
+li.ok .todo-name {
+    color: #8f8f8f;
+    text-decoration: line-through;
+}
+input[type="checkbox"] {
+    margin-right: 20px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+label {
+    flex: 1;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px #d9d9d9;
+    cursor: pointer;
+}
+.delete-button {
+    background: #f87272;
+    color: #fff;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+.delete-button:hover {
+    background: #e04c4c;
+    transform: translateY(-3px);
+}
