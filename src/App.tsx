@@ -1,27 +1,23 @@
-import { KeyboardEvent, ChangeEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+import Li from './components/Li'
+import From from './components/Form'
+import { changeTodoState, todo } from './types'
 
-interface todo {
-  id: number | string
-  name: string
-  done: boolean
-}
 export default function App() {
   const [todos, setTodos] = useState<todo[]>(JSON.parse(localStorage.getItem('todos') ?? '[]'))
-  const [text, setText] = useState<string>('')
 
-  const addTodo = (): void => {
-    if (!text.trim()) return
+  const addTodo = (name: string): void => {
+    if (!name.trim()) return
     const newTodo = {
       id: Date.now(),
-      name: text.trim(),
+      name: name.trim(),
       done: false
     }
     setTodos([newTodo, ...todos])
-    setText('')
   }
 
-  const changeTodoState = (id: number | string, type: string) => {
+  const changeTodoState: changeTodoState = (id, type) => {
     const newTodos = [...todos]
     const index = newTodos.findIndex(i => i.id === id)
     switch (type) {
@@ -35,18 +31,8 @@ export default function App() {
     setTodos(newTodos)
   }
 
-  const handleInputKeyUp = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') addTodo()
-  }
-
   const lis = todos.map(item => (
-    <li key={item.id} className={item.done ? 'ok' : 'no'}>
-      <label className="label">
-        <input type="checkbox" checked={item.done} onChange={() => changeTodoState(item.id, 'check')}/>
-        <span className="todo-name">{ item.name }</span>
-      </label>
-      <button className="delete-button" onClick={() => changeTodoState(item.id, 'delete')}>Delete</button>
-    </li>
+    <Li key={item.id} item={item} changeTodoState={changeTodoState}/>
   ))
 
   useEffect(() => {
@@ -56,17 +42,7 @@ export default function App() {
   return (
     <div className="container">
       <h1>Todo List</h1>
-      <div className="form">
-        <label>Add Todo:</label>
-        <input
-          type="text"
-          placeholder="Enter your todo"
-          value={text}
-          onInput={(e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
-          onKeyUp={handleInputKeyUp}
-        />
-        <button type="submit" onClick={addTodo}>Add</button>
-      </div>
+      <From addTodo={addTodo}/>
       <ul>{ lis }</ul>
     </div>
   )
