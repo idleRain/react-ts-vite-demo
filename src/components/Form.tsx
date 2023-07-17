@@ -1,4 +1,5 @@
-import { ChangeEvent, KeyboardEvent, useState } from 'react'
+import { useState } from 'react'
+import type { ChangeEvent, KeyboardEvent } from 'react'
 
 interface props {
   addTodo: (value: string) => void

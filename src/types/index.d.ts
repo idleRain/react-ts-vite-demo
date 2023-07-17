@@ -1,8 +1,8 @@
-export interface todo {
+export interface Todo {
   id: number | string
   name: string
   done: boolean
 }
 
 type type = 'check' | 'delete'
-export type changeTodoState = (id: string | number, type: type) => void
+export type ChangeTodoState = (id: string | number, type: type) => void

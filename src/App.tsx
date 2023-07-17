@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Li from './components/Li'
 import From from './components/Form'
-import { changeTodoState, todo } from './types'
+import type { ChangeTodoState, Todo } from './types'
 
 export default function App() {
-  const [todos, setTodos] = useState<todo[]>(JSON.parse(localStorage.getItem('todos') ?? '[]'))
-
+  const [todos, setTodos] = useState<Todo[]>(JSON.parse(localStorage.getItem('todos') ?? '[]'))
   const addTodo = (name: string): void => {
     if (!name.trim()) return
     const newTodo = {
@@ -17,7 +16,7 @@ export default function App() {
     setTodos([newTodo, ...todos])
   }
 
-  const changeTodoState: changeTodoState = (id, type) => {
+  const changeTodoState: ChangeTodoState = (id, type) => {
     const newTodos = [...todos]
     const index = newTodos.findIndex(i => i.id === id)
     switch (type) {

@@ -1,8 +1,8 @@
-import { todo, changeTodoState } from '../types'
+import type { Todo, ChangeTodoState } from '../types'
 
 interface props {
-  item: todo,
-  changeTodoState: changeTodoState
+  item: Todo,
+  changeTodoState: ChangeTodoState
 }
 
 export default function Li({ item, changeTodoState }: props) {
